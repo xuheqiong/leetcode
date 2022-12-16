@@ -36,12 +36,6 @@ public class Solution {
         return ret;
     }
 
-    private void swap(int[][] intervals, int index1, int index2) {
-        int[] tmp = intervals[index1];
-        intervals[index1] = intervals[index2];
-        intervals[index2] = tmp;
-    }
-
     /**
      * 返回的是下一次要合并的数组
      *
