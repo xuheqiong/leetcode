@@ -20,10 +20,26 @@ public class Solution {
 
     public void sortColors(int[] nums) {
 
+        // 三路快速排序算法
+        // 定义：[l, zero]=0, [zero+1, one]=1, [one+1, r]=2
+        int zero = -1, i = 0, two = nums.length;
+
+        while (i < two) {
+            if (nums[i] == 0) {
+                zero++;
+                swap(nums, i, zero);
+                i++;
+            } else if (nums[i] == 1) {
+                i++;
+            } else {
+                two--;
+                swap(nums, i, two);
+            }
+        }
     }
 
-    // 插入排序
     public void sortColors2(int[] nums) {
+        // 插入排序
         for (int i = 0; i < nums.length; i++) {
             for (int j = i; j > 0; j--) {
                 if (nums[j] < nums[j - 1]) {
@@ -43,7 +59,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] nums = new int[]{0, 1, 2, 0, 1, 2};
+        int[] nums = new int[]{2, 1, 2, 0, 1, 2, 0, 0, 1, 1, 2, 0};
 
         solution.sortColors(nums);
         System.out.println(Arrays.toString(nums));
